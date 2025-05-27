@@ -104,6 +104,19 @@ class TelefonoController {
         }
         die();
     }
+
+    //api
+    public function api() {
+
+        while (ob_get_level()) {
+            ob_end_clean();
+        }
+        $telefonos = $this->telefono->getAll();
+        header('Content-Type: application/json');
+        echo json_encode($telefonos);
+        exit;
+    }
+
 }
 
 // Manejo de la acción en la URL
